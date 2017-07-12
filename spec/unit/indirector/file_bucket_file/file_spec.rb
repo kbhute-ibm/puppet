@@ -45,12 +45,12 @@ describe Puppet::FileBucketFile::File, :uses_checksums => true do
         first_contents = [0x6165300e,0x87a79a55,0xf7c60bd0,0x34febd0b,
                           0x6503cf04,0x854f709e,0xfb0fc034,0x874c9c65,
                           0x2f94cc40,0x15a12deb,0x5c15f4a3,0x490786bb,
-                          0x6d658673,0xa4341f7d,0x8fd75920,0xefd18d5a].pack("I" * 16)
+                          0x6d658673,0xa4341f7d,0x8fd75920,0xefd18d5a].pack("V" * 16)
 
         collision_contents = [0x6165300e,0x87a79a55,0xf7c60bd0,0x34febd0b,
                               0x6503cf04,0x854f749e,0xfb0fc034,0x874c9c65,
                               0x2f94cc40,0x15a12deb,0xdc15f4a3,0x490786bb,
-                              0x6d658673,0xa4341f7d,0x8fd75920,0xefd18d5a].pack("I" * 16)
+                              0x6d658673,0xa4341f7d,0x8fd75920,0xefd18d5a].pack("V" * 16)
 
         checksum_value = save_bucket_file(first_contents, "/foo/bar")
 
@@ -366,3 +366,4 @@ describe Puppet::FileBucketFile::File, :uses_checksums => true do
     end
   end
 end
+
